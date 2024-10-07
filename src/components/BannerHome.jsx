@@ -19,26 +19,25 @@ const BannerHome = () => {
     }
   };
 
-  useEffect(()=>{
-    const interval = setInterval(()=>{
+  useEffect(() => {
+    const interval = setInterval(() => {
       if (currentImage < bannerData.length - 1) {
-        handleNext()
-      }
-      else{
+        handleNext();
+      } else {
         // alert("Complete All Image")
-        setCurrentImage(0)
+        setCurrentImage(0);
       }
-    },5000)
+    }, 5000);
 
-    return ()=> clearInterval(interval)
-  },[bannerData,imageUrl,currentImage])
+    return () => clearInterval(interval);
+  }, [bannerData, imageUrl, currentImage]);
   return (
     <section className="w-full h-full">
       <div className="flex min-h-full max-h-[95vh] overflow-hidden">
         {bannerData.map((data, index) => {
           return (
             <div
-              key={data.id+"bannerHome"+index}
+              key={data.id + "bannerHome" + index}
               className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative transition-all group"
               style={{ transform: `translateX(-${currentImage * 100}%)` }}
             >
@@ -80,8 +79,13 @@ const BannerHome = () => {
                     <span>|</span>
                     <p>View : {Number(data.popularity).toFixed(0)}</p>
                   </div>
-                  <Link to={"/"+data?.media_type+"/"+data.id} className="bg-white px-4 py-2 text-black font-bold rounded mt-4  hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105">
-                    Play Now
+                  <Link  to={"/" + data?.media_type + "/" + data.id}>
+                    <button
+                     
+                      className=" bg-white px-4 py-2 text-black font-bold rounded mt-4  hover:bg-gradient-to-l from-red-700 to-orange-500 shadow-md transition-all hover:scale-105"
+                    >
+                      Play Now
+                    </button>
                   </Link>
                 </div>
               </div>
