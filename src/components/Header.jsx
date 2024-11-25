@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import MovieH from "../assets/movieh-logo.png"
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userIcon from "../assets/user.png";
 import { IoSearchOutline } from "react-icons/io5";
@@ -10,8 +11,6 @@ const Header = () => {
   const removeSpace = location?.search?.slice(3)?.split("%20")?.join(" ")
   const [searchInput, setSearchInput] = useState(removeSpace);
   const navigate = useNavigate();
-
-  console.log(location);
   useEffect(() => {
     if (searchInput) {
       navigate(`/search?q=${searchInput}`);
@@ -26,7 +25,7 @@ const Header = () => {
     <header className="fixed w-full top-0 h-16 bg-black bg-opacity-50 z-40">
       <div className="container mx-auto px-3 flex items-center h-full">
         <Link to={"/"}>
-          <img src={logo} alt="logo" width={120} />
+          <img src={MovieH} alt="logo" width={120} />
         </Link>
 
         <nav className="hidden  lg:flex items-center gap-1 ml-5">
